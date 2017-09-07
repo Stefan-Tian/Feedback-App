@@ -14,13 +14,13 @@ module.exports = app => {
     "/auth/google/callback",
     passport.authenticate("google"),
     (req, res) => {
-      res.send("You just logged in!");
+      res.redirect("/surveys");
     }
   );
 
   app.get("/api/logout", (req, res) => {
     req.logout(); // kills the cookie
-    res.send("You just logged out");
+    res.redirect("/");
   });
 
   app.get("/api/current_user", (req, res) => {
