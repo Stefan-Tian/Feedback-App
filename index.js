@@ -39,7 +39,7 @@ if (process.env.NODE_ENV === "production") {
   const path = require("path");
   app.get("*", (req, res) =>
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
-  ); // if we've exhausted all files, then render the index.html cause react-router will know what to do
+  ); // if we exhaust all files and find no match, then render the index.html cause react-router will know what to do
 }
 
 const PORT = process.env.PORT || 5000;
