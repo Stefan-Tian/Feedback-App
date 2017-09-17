@@ -5,6 +5,7 @@ const passport = require("passport");
 const bodyParser = require("body-parser"); // for me to use req.body
 const keys = require("./config/keys");
 require("./models/User"); // this line should always come before the next one since we need to build the user model first
+require("./models/Survey");
 require("./services/passport"); // we're importing it as a service, so no need to assign.
 
 mongoose.Promise = global.Promise;
@@ -28,6 +29,7 @@ app.use(passport.session());
 
 require("./routes/authRoutes")(app); // we're only gonna use this once, so there's no point of assigning it to a const
 require("./routes/billingRoutes")(app);
+require("./routes/surveyRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
   // Express will sereve up production assets
